@@ -8,6 +8,8 @@ class DeliveryGroup extends React.Component {
  
     this.state = {
       switchValue: this.props.item.InMaintenanceMode,
+      customerId: 'uh9wi6bswb26',
+      siteId: 'c01ec8a0-229b-4b7e-9bb9-ea9a96ffeb78',
       
     };
    } 
@@ -16,7 +18,8 @@ class DeliveryGroup extends React.Component {
     const { customerId, siteId } = this.state;
     const url = `https://${customerId}.xendesktop.net/citrix/orchestration/api/techpreview/${customerId}/${siteId}/DeliveryGroups/${this.props.item.Id}`;
     const headers = new Headers();
-    const patchPayload = this.props.item.InMaintenanceMode ? false : true;
+    const patchPayload = this.state.switchValue ? false : true;
+    console.log(patchPayload);
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX2lkIjoiN2I4NmQzYjQtY2FhYS00M2Q4LWE2ZWYtN2MxNmEwZjNkZDIyIiwicHJpbmNpcGFsIjoiYW5nZWxvLnNhcmFjZW5vQGNpdHJpeC5jb20iLCJhY2Nlc3NfdG9rZW5fc2NvcGUiOiIiLCJyZWZyZXNoX3Rva2VuIjoiIiwiYWNjZXNzX3Rva2VuIjoiIiwiZGlzcGxheU5hbWUiOiJBbmdlbG8gU2FyYWNlbm8iLCJyZWZyZXNoX2V4cGlyYXRpb24iOiIxNTU3OTEzMTY3MTM4IiwiY3VzdG9tZXJzIjoiW3tcIkN1c3RvbWVySWRcIjpcInVoOXdpNmJzd2IyNlwiLFwiR2VvXCI6XCJVU1wifV0iLCJlbWFpbF92ZXJpZmllZCI6IlRydWUiLCJjdHhfYXV0aF9hbGlhcyI6IjM3MDhmNTgxLTYwOTAtNDI1NS04ZTM1LTU0Y2JkY2M3NzQxMCIsIm5hbWUiOiJBbmdlbG8gU2FyYWNlbm8iLCJzdWIiOiI3Yjg2ZDNiNC1jYWFhLTQzZDgtYTZlZi03YzE2YTBmM2RkMjIiLCJlbWFpbCI6ImFuZ2Vsby5zYXJhY2Vub0BjaXRyaXguY29tIiwiYW1yIjoiW1wiY2xpZW50XCJdIiwiZGlzY292ZXJ5Ijoie1wiSXNzdWVyXCI6XCJodHRwczovL3RydXN0LXVzLmNpdHJpeHdvcmtzcGFjZXNhcGkubmV0XCJ9IiwiaXNzIjoiY3dzIiwiZXhwIjoxNTU3ODczNTY3LCJuYmYiOjE1NTc4Njk5Njd9.pBZEJzohoKON7YXtwOcqzOB0qQr1DvghdXBtjjJje1Izt3Kes1ORtgzGB8QiGa_IJYd7qmsAyV3PIZt7wZCSUT32b4B8yeS-WR4BaCpM9878EEx5oYM9e9Z2RowEl3BuYkw-4kQzCv9rrXLEbSX0MT9b19rTsUky9cqgbGjS9IQXG8oZCWGhCi3LVLXPV6zDe9Q1-B6JRFLb8cWnPfmsAcv_6Y1Y88kLW83gOvn-pm_ReLRvxwoP2GRarumCLmSUH3FjlN28MbITfoc1k7WZ2NNgkOJAdIX6hhxF5JsvHmr8PTIF_QYq2wfiTLUwdpzpdJEkyW_NN0euV23USPajcA');
